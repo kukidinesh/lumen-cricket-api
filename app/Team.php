@@ -24,3 +24,4 @@ class Team extends Model
      */
     protected $hidden = [];
 }
+    

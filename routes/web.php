@@ -10,11 +10,12 @@
 | and give it the Closure to call when that URI is requested.
 |
 */
-
+// Default welcome routes
 $router->get('/', function () use ($router) {
     return "welcome";
 });
 
+// Team routes
 $router->group(['prefix' => 'api'], function() use ($router){
 
 	//load all teams
@@ -25,6 +26,8 @@ $router->group(['prefix' => 'api'], function() use ($router){
 	$router->get('team/{id}', ['uses'=> 'TeamController@getTeamById']);
 });
 
+//player routes
+// @ public GET
 $router->group(['prefix' => 'api'], function() use ($router){
 
 	//load all Players
@@ -38,5 +41,12 @@ $router->group(['prefix' => 'api'], function() use ($router){
 	$router->get('playerFromTeam/{team_id}', ['uses'=> 'PlayerController@getPlayerByTeamId']);
 
 	$router->post('player', ['uses' => 'PlayerController@create']);
+
+});
+//fixture routes
+$router->group(['prefix' => 'api'], function() use ($router){
+
+	//load all Players
+	$router->get('fixtures', ['uses'=> 'FixtureController@getList']);
 
 });

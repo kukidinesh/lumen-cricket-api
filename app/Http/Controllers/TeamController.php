@@ -12,7 +12,7 @@ class TeamController extends BaseController
 {
     //show all team
     public function getTeamList(){
-
+    	
     	return response()->json(Team::all());
 
     }
